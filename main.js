@@ -56,7 +56,7 @@ fastify.post('/market', async (request, reply) => {
       existingMarkets[i].currency === currency
     ) {
       throw new createError.BadRequest(
-        '{"error": "Market already exists, try a different country/currency combination or search id in all markets to update the data"}'
+        'Market already exists, try a different country / currency combination or search id in all markets to update the data'
       );
     }
   }

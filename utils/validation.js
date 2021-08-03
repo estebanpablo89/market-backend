@@ -16,7 +16,7 @@ function validation(
     show_cents == null ||
     !display
   ) {
-    throw new createError.BadRequest('{"error": "Missing fields"}');
+    throw new createError.BadRequest('Missing fields');
   }
 
   const currencyCodes = [
@@ -202,7 +202,7 @@ function validation(
 
   if (!currencyCodes.includes(currency)) {
     throw new createError.BadRequest(
-      '{"error": "Incorrect currency, supported format values are: USD, CAD, EUR, etc..."}'
+      'Incorrect currency, supported format values are: USD, CAD, EUR, etc...'
     );
   }
 
@@ -460,7 +460,7 @@ function validation(
 
   if (!countryList.includes(country)) {
     throw new createError.BadRequest(
-      '{"error": "Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc..."}'
+      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc...'
     );
   }
 
@@ -468,13 +468,13 @@ function validation(
 
   if (!booleans.includes(currency_before_price)) {
     throw new createError.BadRequest(
-      '{"error": "Incorrect format, currency_before_price & show_cents fields only accepts true or false"}'
+      'Incorrect format, currency_before_price & show_cents fields only accepts true or false'
     );
   }
 
   if (!booleans.includes(show_cents)) {
     throw new createError.BadRequest(
-      '{"error": "Incorrect format, currency_before_price & show_cents fields only accepts true or false"}'
+      'Incorrect format, currency_before_price & show_cents fields only accepts true or false'
     );
   }
 
@@ -482,7 +482,7 @@ function validation(
 
   if (!displayTypes.includes(display)) {
     throw new createError.BadRequest(
-      '{"error": "Incorrect format, display only accepts #.###,## or #,###.##"}'
+      'Incorrect format, display only accepts #.###,## or #,###.##'
     );
   }
 
@@ -490,7 +490,7 @@ function validation(
 
   if (!code_symbolTypes.includes(code_symbol)) {
     throw new createError.BadRequest(
-      '{"error": "Incorrect format, code_symbol only accepts code or symbol"}'
+      'Incorrect format, code_symbol only accepts code or symbol'
     );
   }
 }
