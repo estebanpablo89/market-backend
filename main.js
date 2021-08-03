@@ -2,6 +2,7 @@ const fastifyImp = require('fastify');
 const fastify = fastifyImp({
   logger: true,
 });
+require('dotenv').config();
 
 const connectDB = require('./mongodb-client');
 const MarketModel = require('./model/Market.js');
