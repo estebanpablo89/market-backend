@@ -1,7 +1,7 @@
-const fastifyImp = require('fastify');
-const fastify = fastifyImp({
-  logger: true,
-});
+const fastify = require('fastify')({ logger: true });
+const createError = require('http-errors');
+const validation = require('./utils/validation');
+
 require('dotenv').config();
 
 const connectDB = require('./mongodb-client');
@@ -23,6 +23,44 @@ fastify.get('/markets', async (request, reply) => {
 // @access  Public
 
 fastify.post('/market', async (request, reply) => {
+  const {
+    country,
+    currency,
+    code_symbol,
+    currency_before_price,
+    show_cents,
+    display,
+  } = request.body;
+
+  validation(
+    country,
+    currency,
+    code_symbol,
+    currency_before_price,
+    show_cents,
+    display
+  );
+
+  let existingMarkets;
+
+  try {
+    existingMarkets = await MarketModel.find({});
+  } catch (error) {
+    console.error(error);
+    throw new createError.InternalServerError(error);
+  }
+
+  for (let i = 0; i < existingMarkets.length; i++) {
+    if (
+      existingMarkets[i].country === country &&
+      existingMarkets[i].currency === currency
+    ) {
+      throw new createError.BadRequest(
+        '{"error": "Market already exists, try a different country/currency combination or search id in all markets to update the data"}'
+      );
+    }
+  }
+
   const market = await MarketModel.create(request.body);
   reply.code(201).send({ success: true, data: market });
 });
