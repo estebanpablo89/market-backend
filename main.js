@@ -35,6 +35,31 @@ fastify.get('/market/:id', async (request, reply) => {
   reply.code(201).send({ success: true, data: market });
 });
 
+// @desc    Update market
+// @route   PUT /markets/:id
+// @access  Public
+
+fastify.put('/market/:id', async (request, reply) => {
+  let market = await MarketModel.findById(request.params.id);
+
+  if (!market) {
+    reply.code(404).send({
+      error: `No market found with id: ${request.params.id}`,
+    });
+  }
+
+  market = await MarketModel.findByIdAndUpdate(
+    request.params.id,
+    request.body,
+    {
+      new: true,
+      runValidators: true,
+    }
+  );
+
+  reply.code(200).send({ success: true, data: market });
+});
+
 // @desc    Delete market
 // @route   DELETE /market/:id
 // @access  Public

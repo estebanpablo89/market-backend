@@ -28,7 +28,7 @@ functions:
     handler: index.handler
     events:
       - http:
-          method: PATCH
+          method: PUT
           path: /market/{id}
   deleteMarket:
     handler: index.handler
