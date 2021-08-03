@@ -8,6 +8,15 @@ const MarketModel = require('./model/Market.js');
 
 connectDB();
 
+// @desc    Get markets
+// @route   GET /markets
+// @access  Public
+
+fastify.get('/markets', async (request, reply) => {
+  const markets = await MarketModel.find({});
+  reply.code(201).send({ success: true, data: markets });
+});
+
 // @desc    Create market
 // @route   POST /market
 // @access  Public
