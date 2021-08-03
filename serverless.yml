@@ -1,0 +1,17 @@
+service: market-backend
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: us-east-2
+
+functions:
+  hello:
+    handler: index.handler
+    events:
+      - http:
+          method: get
+          cors: true
+
+plugins:
+  - serverless-offline
