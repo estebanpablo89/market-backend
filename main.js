@@ -8,15 +8,31 @@ const MarketModel = require('./model/Market.js');
 
 connectDB();
 
-fastify.post('/market', async (request, reply) => {
-  console.log(request);
-  const market = await MarketModel.create(request.body);
+// @desc    Create market
+// @route   POST /market
+// @access  Public
 
-  reply.send({ success: true, data: market });
+fastify.post('/market', async (request, reply) => {
+  const market = await MarketModel.create(request.body);
+  reply.code(201).send({ success: true, data: market });
 });
 
-fastify.get('/markets', async (request, reply) => {
-  reply.send({ text: 'Get, ' + (request.query.name || 'Friend') });
+// @desc    Delete market
+// @route   DELETE /market/:id
+// @access  Public
+
+fastify.delete('/market/:id', async (request, reply) => {
+  const market = await MarketModel.findById(request.params.id);
+
+  if (!market) {
+    reply.code(404).send({
+      error: `No market found with id: ${request.params.id}`,
+    });
+  }
+
+  await MarketModel.findByIdAndDelete(request.params.id);
+
+  reply.send({ success: true, data: {} });
 });
 
 module.exports = fastify;
