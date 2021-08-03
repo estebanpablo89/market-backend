@@ -26,6 +26,15 @@ fastify.post('/market', async (request, reply) => {
   reply.code(201).send({ success: true, data: market });
 });
 
+// @desc    Get single market
+// @route   GET /markets/:id
+// @access  Public
+
+fastify.get('/market/:id', async (request, reply) => {
+  const market = await MarketModel.findById(request.params.id);
+  reply.code(201).send({ success: true, data: market });
+});
+
 // @desc    Delete market
 // @route   DELETE /market/:id
 // @access  Public
