@@ -6,12 +6,36 @@ provider:
   region: us-east-2
 
 functions:
-  hello:
+  createMarket:
     handler: index.handler
     events:
       - http:
-          method: get
-          cors: true
+          method: POST
+          path: /market
+  getMarkets:
+    handler: index.handler
+    events:
+      - http:
+          method: GET
+          path: /markets
+  getMarket:
+    handler: index.handler
+    events:
+      - http:
+          method: GET
+          path: /market/{id}
+  updateMarket:
+    handler: index.handler
+    events:
+      - http:
+          method: PATCH
+          path: /market/{id}
+  deleteMarket:
+    handler: index.handler
+    events:
+      - http:
+          method: DELETE
+          path: /market/{id}
 
 plugins:
   - serverless-offline
