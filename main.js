@@ -79,6 +79,24 @@ fastify.get('/market/:id', async (request, reply) => {
 // @access  Public
 
 fastify.put('/market/:id', async (request, reply) => {
+  const {
+    country,
+    currency,
+    code_symbol,
+    currency_before_price,
+    show_cents,
+    display,
+  } = request.body;
+
+  validation(
+    country,
+    currency,
+    code_symbol,
+    currency_before_price,
+    show_cents,
+    display
+  );
+
   let market = await MarketModel.findById(request.params.id);
 
   if (!market) {

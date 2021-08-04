@@ -16,7 +16,9 @@ function validation(
     show_cents == null ||
     !display
   ) {
-    throw new createError.BadRequest('Missing fields');
+    throw new createError.BadRequest(
+      'Missing fields (country, currency, code_symbol, currency_before_price, show_cents, display)'
+    );
   }
 
   const currencyCodes = [
@@ -202,7 +204,7 @@ function validation(
 
   if (!currencyCodes.includes(currency)) {
     throw new createError.BadRequest(
-      'Incorrect currency, supported format values are: USD, CAD, EUR, etc...'
+      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes)'
     );
   }
 
@@ -460,7 +462,7 @@ function validation(
 
   if (!countryList.includes(country)) {
     throw new createError.BadRequest(
-      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc...'
+      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes)'
     );
   }
 
@@ -468,13 +470,13 @@ function validation(
 
   if (!booleans.includes(currency_before_price)) {
     throw new createError.BadRequest(
-      'Incorrect format, currency_before_price & show_cents fields only accepts true or false'
+      'Incorrect format, currency_before_price & show_cents fields only accepts true or false (with double quotes)'
     );
   }
 
   if (!booleans.includes(show_cents)) {
     throw new createError.BadRequest(
-      'Incorrect format, currency_before_price & show_cents fields only accepts true or false'
+      'Incorrect format, currency_before_price & show_cents fields only accepts true or false (with double quotes)'
     );
   }
 
@@ -482,7 +484,7 @@ function validation(
 
   if (!displayTypes.includes(display)) {
     throw new createError.BadRequest(
-      'Incorrect format, display only accepts #.###,## or #,###.##'
+      'Incorrect format, display only accepts #.###,## or #,###.## (with double quotes)'
     );
   }
 
@@ -490,7 +492,7 @@ function validation(
 
   if (!code_symbolTypes.includes(code_symbol)) {
     throw new createError.BadRequest(
-      'Incorrect format, code_symbol only accepts code or symbol'
+      'Incorrect format, code_symbol only accepts code or symbol (with double quotes)'
     );
   }
 }
