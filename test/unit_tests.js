@@ -71,7 +71,7 @@ describe('Validation', () => {
       });
     }, Error);
   });
-  it('throws error if code_symbol in market is not correct', () => {
+  it('throws error if code_symbol in MarketObject is not correct', () => {
     assert.throw(() => {
       validation({
         country: 'Portugal',
