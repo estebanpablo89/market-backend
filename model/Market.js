@@ -47,6 +47,15 @@ const model = mongoose.model('Market', {
       },
     },
   },
+  display: {
+    type: String,
+    required: true,
+    validate: {
+      validator(display) {
+        return validator.isBoolean(display);
+      },
+    },
+  },
 });
 
 module.exports = model;
