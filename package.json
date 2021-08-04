@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --timeout 9000"
+    "test": "nyc mocha --timeout 9000",
+    "coverage": "nyc npm run test"
   },
   "keywords": [],
   "author": "Pablo Esteban",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "chai": "^4.3.4",
     "mocha": "^9.0.3",
+    "nyc": "^15.1.0",
     "serverless-offline": "^8.0.0",
     "supertest": "^6.1.4"
   }
