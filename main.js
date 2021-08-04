@@ -15,7 +15,7 @@ connectDB();
 
 fastify.get('/markets', async (request, reply) => {
   const markets = await MarketModel.find({});
-  reply.code(201).send({ success: true, data: markets });
+  reply.code(200).send({ success: true, data: markets });
 });
 
 // @desc    Create market
