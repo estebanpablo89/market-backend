@@ -52,7 +52,7 @@ const model = mongoose.model('Market', {
     required: true,
     validate: {
       validator(display) {
-        return validator.isBoolean(display);
+        return validator.isAlphanumeric(display);
       },
     },
   },
