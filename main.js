@@ -145,6 +145,34 @@ fastify.put('/market/:id', async (request, reply) => {
     display
   );
 
+  let currencyCode = [];
+
+  try {
+    currencyCode = await CurrencyModel.find({ name: currency });
+  } catch (error) {
+    throw new createError.InternalServerError(error);
+  }
+
+  if (currencyCode.length === 0) {
+    throw new createError.BadRequest(
+      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes) for supported values please visit /dev/currencies'
+    );
+  }
+
+  let countries = [];
+
+  try {
+    countries = await CountryModel.find({ name: country });
+  } catch (error) {
+    throw new createError.InternalServerError(error);
+  }
+
+  if (countries.length === 0) {
+    throw new createError.BadRequest(
+      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes) for supported values please visit /dev/countries'
+    );
+  }
+
   let market = await MarketModel.findById(request.params.id);
 
   if (!market) {
