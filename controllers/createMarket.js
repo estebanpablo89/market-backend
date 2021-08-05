@@ -59,21 +59,19 @@ async function createMarket(request, reply) {
   let existingMarkets;
 
   try {
-    existingMarkets = await MarketModel.find({});
+    existingMarkets = await MarketModel.find({
+      country: country,
+      currency: currency,
+    });
   } catch (error) {
     console.error(error);
     throw new createError.InternalServerError(error);
   }
 
-  for (let i = 0; i < existingMarkets.length; i++) {
-    if (
-      existingMarkets[i].country === country &&
-      existingMarkets[i].currency === currency
-    ) {
-      throw new createError.BadRequest(
-        'Market already exists, try a different country / currency combination or search id in all markets to update the data'
-      );
-    }
+  if (existingMarkets.length !== 0) {
+    throw new createError.BadRequest(
+      'Market already exists, try a different country / currency combination or search id in all markets to update the data'
+    );
   }
 
   const market = await MarketModel.create(request.body);
