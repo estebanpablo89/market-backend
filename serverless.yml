@@ -36,6 +36,18 @@ functions:
       - http:
           method: DELETE
           path: /market/{id}
+  getCountries:
+    handler: index.handler
+    events:
+      - http:
+          method: GET
+          path: /countries
+  getCurrencies:
+    handler: index.handler
+    events:
+      - http:
+          method: GET
+          path: /currencies
 
 plugins:
   - serverless-offline

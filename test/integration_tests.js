@@ -70,7 +70,7 @@ describe('Market', () => {
     });
     expect(response.status).to.equal(400);
     expect(response.body.message).to.equal(
-      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes)'
+      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes) for supported values please visit /dev/currencies'
     );
   });
 
@@ -85,7 +85,7 @@ describe('Market', () => {
     });
     expect(response.status).to.equal(400);
     expect(response.body.message).to.equal(
-      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes)'
+      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes) for supported values please visit /dev/countries'
     );
   });
 

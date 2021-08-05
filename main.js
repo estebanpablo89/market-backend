@@ -20,6 +20,24 @@ fastify.get('/markets', async (request, reply) => {
   reply.code(200).send({ success: true, data: markets });
 });
 
+// @desc    Get countries
+// @route   GET /countries
+// @access  Public
+
+fastify.get('/countries', async (request, reply) => {
+  const countries = await CountryModel.find({});
+  reply.code(200).send({ success: true, data: countries });
+});
+
+// @desc    Get markets
+// @route   GET /markets
+// @access  Public
+
+fastify.get('/currencies', async (request, reply) => {
+  const currencies = await CurrencyModel.find({});
+  reply.code(200).send({ success: true, data: currencies });
+});
+
 // @desc    Create market
 // @route   POST /market
 // @access  Public
@@ -53,7 +71,7 @@ fastify.post('/market', async (request, reply) => {
 
   if (currencyCode.length === 0) {
     throw new createError.BadRequest(
-      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes)'
+      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes) for supported values please visit /dev/currencies'
     );
   }
 
@@ -67,7 +85,7 @@ fastify.post('/market', async (request, reply) => {
 
   if (countries.length === 0) {
     throw new createError.BadRequest(
-      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes)'
+      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes) for supported values please visit /dev/countries'
     );
   }
 
