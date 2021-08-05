@@ -10,7 +10,7 @@ Country and currency CRUD with AWS and Fastify
 
 ## Installation
 
-Use the package manager [npm](https://nodejs.org/en/) to install dependencies
+Use [npm](https://nodejs.org/en/) package manager to install dependencies
 
 ```bash
 npm i
@@ -19,7 +19,7 @@ Install and configure [serverless](https://www.serverless.com/)
 
 ## Usage
 
-Change example.env to .env and complete MongoDB URI
+Change example.env to .env and fill MongoDB URI
 
 Deploy server
 ```bash
@@ -32,9 +32,10 @@ Deploy server locally and run tests
 serverless offline
 npm test
 ```
-## Used
+## Used technologies
 - Fastify for logic and end points
 - Serverless for deployment with AWS lambda functions
 - MongoDB for data persistence
 - Mocha as testing framework
 - Chai for assertions
+- Swagger and Postman for documentation
