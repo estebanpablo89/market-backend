@@ -2,6 +2,12 @@
 
 Country and currency CRUD with AWS and Fastify
 
+## Documentation
+
+- [Swagger](https://app.swaggerhub.com/apis/estebanpablo/Markets-backend/1)
+
+- [Postman](https://documenter.getpostman.com/view/724536/TzeXkT81)
+
 ## Installation
 
 Use the package manager [node](https://nodejs.org/en/) to install dependencies
