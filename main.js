@@ -29,8 +29,8 @@ fastify.get('/countries', async (request, reply) => {
   reply.code(200).send({ success: true, data: countries });
 });
 
-// @desc    Get markets
-// @route   GET /markets
+// @desc    Get currencies
+// @route   GET /currencies
 // @access  Public
 
 fastify.get('/currencies', async (request, reply) => {
