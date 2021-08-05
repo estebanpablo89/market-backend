@@ -66,7 +66,7 @@ describe('Market', () => {
       code_symbol: 'symbol',
       currency_before_price: 'true',
       show_cents: 'true',
-      display: '#.###,#',
+      display: '#.###,##',
     });
     expect(response.status).to.equal(400);
     expect(response.body.message).to.equal(
@@ -81,7 +81,7 @@ describe('Market', () => {
       code_symbol: 'symbol',
       currency_before_price: 'true',
       show_cents: 'true',
-      display: '#.###,#',
+      display: '#.###,##',
     });
     expect(response.status).to.equal(400);
     expect(response.body.message).to.equal(
@@ -96,7 +96,7 @@ describe('Market', () => {
       code_symbol: 'symbol',
       currency_before_price: 'klasfd8',
       show_cents: 'true',
-      display: '#.###,#',
+      display: '#.###,##',
     });
     expect(response.status).to.equal(400);
     expect(response.body.message).to.equal(
@@ -111,7 +111,7 @@ describe('Market', () => {
       code_symbol: 'symbol',
       currency_before_price: 'klasfd8',
       show_cents: 'kshadsk',
-      display: '#.###,#',
+      display: '#.###,##',
     });
     expect(response.status).to.equal(400);
     expect(response.body.message).to.equal(

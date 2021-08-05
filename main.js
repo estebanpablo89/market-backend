@@ -6,6 +6,8 @@ require('dotenv').config();
 
 const connectDB = require('./mongodb-client');
 const MarketModel = require('./model/Market.js');
+const CurrencyModel = require('./model/Currency.js');
+const CountryModel = require('./model/Country.js');
 
 connectDB();
 
@@ -40,6 +42,34 @@ fastify.post('/market', async (request, reply) => {
     show_cents,
     display
   );
+
+  let currencyCode = [];
+
+  try {
+    currencyCode = await CurrencyModel.find({ name: currency });
+  } catch (error) {
+    throw new createError.InternalServerError(error);
+  }
+
+  if (currencyCode.length === 0) {
+    throw new createError.BadRequest(
+      'Incorrect currency, supported format values are: USD, CAD, EUR, etc... (with double quotes)'
+    );
+  }
+
+  let countries = [];
+
+  try {
+    countries = await CountryModel.find({ name: country });
+  } catch (error) {
+    throw new createError.InternalServerError(error);
+  }
+
+  if (countries.length === 0) {
+    throw new createError.BadRequest(
+      'Incorrect country, supported format values are: United States, Ecuador, Venezuela, Spain, etc... (with double quotes)'
+    );
+  }
 
   let existingMarkets;
 

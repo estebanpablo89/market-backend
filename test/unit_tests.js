@@ -22,18 +22,6 @@ describe('Validation', () => {
       });
     }, Error);
   });
-  it('throws error if country in MarketObject is incorrect', () => {
-    assert.throw(() => {
-      validation({
-        country: 'Ecuadordaslkjf',
-        currency: 'CAD',
-        code_symbol: 'symbol',
-        currency_before_price: 'true',
-        show_cents: 'true',
-        display: '#.###,#',
-      });
-    }, Error);
-  });
   it('throws error if currency_before_price in MarketObject is not boolean', () => {
     assert.throw(() => {
       validation({
