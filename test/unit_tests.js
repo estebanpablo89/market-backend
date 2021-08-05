@@ -71,10 +71,4 @@ describe('Validation', () => {
       });
     }, Error);
   });
-
-  it('does not throw error if MarketObject is valid', () => {
-    assert.throw(() => {
-      validation(validMarket);
-    }, Error);
-  });
 });
