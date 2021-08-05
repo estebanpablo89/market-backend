@@ -10,7 +10,7 @@ Country and currency CRUD with AWS and Fastify
 
 ## Installation
 
-Use the package manager [node](https://nodejs.org/en/) to install dependencies
+Use the package manager [npm](https://nodejs.org/en/) to install dependencies
 
 ```bash
 npm i
