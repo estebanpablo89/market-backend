@@ -33,9 +33,9 @@ serverless offline
 npm test
 ```
 ## Used technologies
-- Fastify for logic and end points
+- Fastify as web framework
 - Serverless for deployment with AWS lambda functions
-- MongoDB for data persistence
+- MongoDB as document database
 - Mocha as testing framework
 - Chai for assertions
 - Swagger and Postman for documentation
